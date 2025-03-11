@@ -263,7 +263,7 @@ export default function Home() {
 
           {/* Right Column - Floating Elements */}
           <div className="relative hidden lg:block">
-            <div className="absolute inset-0">
+            {/* <div className="absolute inset-0">
               <motion.div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-[#00a8ff] rounded-full mix-blend-multiply filter blur-xl opacity-20"
                 animate={{
@@ -299,7 +299,7 @@ export default function Home() {
                   repeatType: "reverse",
                 }}
               />
-            </div>
+            </div> */}
 
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
