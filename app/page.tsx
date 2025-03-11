@@ -264,64 +264,12 @@ export default function Home() {
 
           {/* Right Column - Floating Elements */}
           <div className="relative hidden lg:block">
-            {/* <div className="absolute inset-0">
-              <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-[#00a8ff] rounded-full mix-blend-multiply filter blur-xl opacity-20"
-                animate={{
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 7,
-                  repeat: Number.POSITIVE_INFINITY,
-                  repeatType: "reverse",
-                }}
-              />
-              <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-                animate={{
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 7,
-                  delay: 2,
-                  repeat: Number.POSITIVE_INFINITY,
-                  repeatType: "reverse",
-                }}
-              />
-              <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20"
-                animate={{
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 7,
-                  delay: 4,
-                  repeat: Number.POSITIVE_INFINITY,
-                  repeatType: "reverse",
-                }}
-              />
-            </div> */}
-
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.7, delay: 0.3 }}
               className="relative w-[400px] h-[400px] mx-auto"
             >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  className="w-64 h-64 rounded-full border-4 border-blue-500/30 dark:border-[#00a8ff]/30"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  className="w-48 h-48 rounded-full border-4 border-purple-500/20 dark:border-purple-400/20"
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                />
-              </div>
               <Image
                 src="/hero1.png"
                 alt="Cybersecurity Illustration"
@@ -462,31 +410,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Floating security icons */}
-      {/* <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
-        {[Lock, Shield, ShieldAlert].map((Icon, index) => (
-          <motion.div
-            key={index}
-            className="absolute text-primary/10 dark:text-primary/5"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0.1, 0.3, 0.1],
-            }}
-            transition={{
-              duration: 10 + index * 5,
-              repeat: Number.POSITIVE_INFINITY,
-              delay: index * 2,
-            }}
-          >
-            <Icon size={30 + index * 10} />
-          </motion.div>
-        ))}
-      </div> */}
 
       <ChatBot />
     </main>
