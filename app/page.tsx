@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import {
   Shield,
   Globe,
@@ -13,7 +13,7 @@ import {
   FileText,
   Newspaper,
 } from "lucide-react"
-import { useCallback, useState, useEffect } from "react"
+import { useCallback, useState, useEffect, useRef } from "react"
 import Particles from "react-particles"
 import { loadSlim } from "tsparticles-slim"
 import type { Container, Engine } from "tsparticles-engine"
@@ -23,6 +23,7 @@ import Link from "next/link"
 import { ContactUs } from "@/components/contactUs"
 import { TypewriterEffect } from "@/components/typewriter-effect"
 import { CountUp } from "@/components/count-up"
+import { ChatBot } from "@/components/ChatBot"
 
 const services = [
   {
@@ -463,7 +464,7 @@ export default function Home() {
       </section>
 
       {/* Floating security icons */}
-      <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
+      {/* <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
         {[Lock, Shield, ShieldAlert].map((Icon, index) => (
           <motion.div
             key={index}
@@ -485,7 +486,9 @@ export default function Home() {
             <Icon size={30 + index * 10} />
           </motion.div>
         ))}
-      </div>
+      </div> */}
+
+      <ChatBot />
     </main>
   )
 }
