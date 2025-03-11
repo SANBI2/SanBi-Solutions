@@ -6,7 +6,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { motion, AnimatePresence } from "framer-motion"
 import { Search, Menu, X } from "lucide-react"
-
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -56,12 +63,21 @@ export function Navbar() {
 
           {/* Styled JOIN Button (Only on Desktop) */}
           <div className="hidden md:block">
-            <Button 
+            {/* <Button 
               className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
               asChild
             >
               <Link href="/auth/signup">JOIN</Link>
-            </Button>
+            </Button> */}
+            <SignedOut>
+            <button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full shadow-md hover:scale-105 transition-transform">
+              <SignInButton />
+            </button>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            
           </div>
         </div>
       </nav>

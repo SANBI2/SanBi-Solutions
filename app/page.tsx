@@ -210,7 +210,7 @@ export default function Home() {
                 className="inline-flex items-center rounded-full border border-gray-300 dark:border-white/10 bg-gray-100 dark:bg-white/5 px-3 py-1 text-sm text-gray-800 dark:text-white backdrop-blur-xl"
               >
                 <Shield className="mr-2 h-4 w-4" />
-                Advanced Security Solutions
+                SanBi Solutions
               </motion.div>
 
               {/* Hero Heading with Typewriter */}
