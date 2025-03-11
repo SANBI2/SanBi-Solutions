@@ -4,13 +4,13 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/navbar"
-
+import './globals.css'
+import { Footer } from "@/components/footer"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Sanbi Solutions",
   description: "Modern cybersecurity solutions",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -24,6 +24,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <Navbar />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
@@ -32,4 +33,4 @@ export default function RootLayout({
 
 
 
-import './globals.css'
+
