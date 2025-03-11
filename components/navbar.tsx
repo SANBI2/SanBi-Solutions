@@ -63,16 +63,13 @@ export function Navbar() {
 
           {/* Styled JOIN Button (Only on Desktop) */}
           <div className="hidden md:block">
-            {/* <Button 
+          <SignedOut>
+            <Button 
               className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full shadow-md hover:scale-105 transition-transform"
               asChild
             >
               <Link href="/auth/signup">JOIN</Link>
-            </Button> */}
-            <SignedOut>
-            <button className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full shadow-md hover:scale-105 transition-transform">
-              <SignInButton />
-            </button>
+            </Button>
             </SignedOut>
             <SignedIn>
               <UserButton />
