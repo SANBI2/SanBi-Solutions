@@ -49,18 +49,28 @@ export function ChatBot() {
         body: JSON.stringify({ message: inputMessage }),
       });
 
+      if (!response.ok) {
+        if (response.status === 429) {
+          throw new Error('Too many requests. Please wait a moment before trying again.');
+        }
+        throw new Error('Failed to get response');
+      }
+
       const data = await response.json();
       
       if (data.error) {
         throw new Error(data.error);
       }
 
-      setMessages((prev) => [...prev, { role: 'assistant', content: data.message }]);
+      setMessages((prev) => [...prev, { 
+        role: 'assistant', 
+        content: data.message 
+      }]);
     } catch (error) {
       console.error('Error:', error);
       setMessages((prev) => [...prev, { 
         role: 'assistant', 
-        content: 'I apologize, but I encountered an error. Please try again.' 
+        content: error instanceof Error ? error.message : 'I apologize, but I encountered an error. Please try again.' 
       }]);
     } finally {
       setIsLoading(false);

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 // Define the model URL - using a conversational model
-const HUGGING_FACE_API_URL = "https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill";
+const HUGGING_FACE_API_URL = "https://api-inference.huggingface.co/models/microsoft/DialoGPT-medium";
 
 // Comprehensive website knowledge base
 const websiteInfo = {
@@ -108,7 +108,7 @@ async function generateResponse(message: string) {
       return `Here are our key statistics:\n• Protecting ${websiteInfo.stats.clientsProtected} clients\n• ${websiteInfo.stats.uptimePercentage}% uptime\n• Blocking ${websiteInfo.stats.threatsBlockedMonthly} threats monthly\n• Serving ${websiteInfo.stats.countriesServed} countries`;
     }
 
-    // For other queries, use Hugging Face API
+    // Update the API call format
     const response = await fetch(HUGGING_FACE_API_URL, {
       method: "POST",
       headers: {
@@ -116,14 +116,13 @@ async function generateResponse(message: string) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        inputs: {
-          text: message,
-          context: `I am an AI assistant for ${websiteInfo.company.name}, ${websiteInfo.company.description}. I help customers with cybersecurity solutions and services.`
-        },
+        inputs: `Context: I am an AI assistant for ${websiteInfo.company.name}, ${websiteInfo.company.description}. 
+                Question: ${message}`,
         parameters: {
           max_length: 150,
           temperature: 0.7,
-          top_p: 0.9
+          top_p: 0.9,
+          return_full_text: false
         }
       }),
     });
@@ -131,10 +130,17 @@ async function generateResponse(message: string) {
     const result = await response.json();
     
     if (result.error) {
+      if (result.error.includes("loading")) {
+        // Model is loading, provide a temporary response
+        return "I'm just warming up. Please try again in a few seconds.";
+      }
       throw new Error(result.error);
     }
 
-    return result[0]?.generated_text || "I apologize, but I couldn't process that request.";
+    // Handle the response format
+    const aiResponse = Array.isArray(result) ? result[0]?.generated_text : result.generated_text;
+    return aiResponse || "I apologize, but I couldn't process that request.";
+
   } catch (error) {
     console.error('Error generating response:', error);
     return "I apologize, but I'm having trouble processing your request. Please try asking about our services or company information.";
